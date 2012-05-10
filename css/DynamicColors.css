@@ -1,0 +1,37 @@
+/*
+ * Dynamic Colors Plugin
+ * https://github.com/tombrus/dynamic-colors
+ *
+ * Adapted by     : Tom Brus        www.tombrus.com
+ *
+ * Copyright 2012, Tom Brus
+ *
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ *    http://www.opensource.org/licenses/mit-license.php
+ *    http://www.opensource.org/licenses/GPL-2.0
+ */
+#DC-selector {
+    background-color : #dddddd;
+    padding          : 4px;
+    margin           : 10px;
+    border           : solid 3px #888888;
+    width            : 875px;
+}
+#DC-selector p {
+    margin  : 0;
+    padding : 0;
+}
+#DC-selectors {
+    height      : 40px;
+    margin-left : 20px;
+}
+#DC-signature {
+    width       : 840px;
+    margin-left : 20px;
+}
+.DC-resetButton {
+    float : right;
+}
+.colorSelector {
+    float : left;
+}

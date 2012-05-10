@@ -4,11 +4,11 @@ dynamic-colors
 JQuery extension to dynamically adjust colors on a page (see index.html):
 
   - define what colors are changeable in your css:
-          #DynamicColors_background {color : #ffefd5;}
+    <pre><code>#DynamicColors_background {color : #ffefd5;}</code></pre>
   - use it anywhere in your css:
-          body {background-color : #ffefd5;}
+    <pre><code>body {background-color : #ffefd5;}</code></pre>
   - init DynamicColors and pass in a div for the color controls:
-          $(function () {$.DynamicColors($("#my-colorpanel"));});
+    <pre><code>$(function () {$.DynamicColors($("#my-colorpanel"));});</code></pre>
   - the color controls div will contain a list of color-pickers that
     allow you to dynamically adjust the colors on the page
   - changed colors are saved in a cookie, so they re-appear

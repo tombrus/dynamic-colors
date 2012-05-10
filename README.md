@@ -1,5 +1,4 @@
-dynamic-colors
-==============
+## dynamic-colors
 
 JQuery extension to dynamically adjust colors on a page (see index.html):
 
@@ -18,17 +17,14 @@ JQuery extension to dynamically adjust colors on a page (see index.html):
 Can be helpful while developing a proper color scheme (or schemes).
 You can also empower your users to tweak some colors to their liking.
 
-todo
-----
+### todo
   - make color controls foldeable/floating
   - show tooltip with color when hovering color pickers
   - format signature as css so that it is pasteable over the initial css
 
-license
--------
+### license
    - Dual licensed under the MIT and GPL licenses.
 
-legal
------
+### legal
    - color-picker is an adjusted version from http://www.eyecon.ro/colorpicker/
    - jquery-cookie is taken from https://github.com/carhartl/jquery-cookie

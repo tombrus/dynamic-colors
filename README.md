@@ -18,7 +18,7 @@ JQuery extension to dynamically adjust colors on a page (see index.html):
 Can be helpful while developing a proper color scheme (or schemes).
 You can also empower your users to tweak some colors to their liking.
 
-TODO
+todo
 ----
   - make color controls foldeable/floating
   - show tooltip with color when hovering color pickers

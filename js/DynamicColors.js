@@ -78,6 +78,9 @@
         } else if (anyMatchIn(rule.cssText)) {
             $.each(style, function (i, field) {
                 var value = style[field];
+                if (verbose) {
+                    console.log("aaahhhh: ", value,anyMatchIn(value));
+                }
                 if (anyMatchIn(value)) {
                     var patch = {
                         style: style,

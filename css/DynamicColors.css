@@ -12,6 +12,7 @@
  */
 #DC-selector {
     background-color : #dddddd;
+    color            : #000000;
     padding          : 4px;
     margin           : 10px;
     border           : solid 3px #888888;

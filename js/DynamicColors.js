@@ -73,6 +73,9 @@
         var text = rule.selectorText;
         var style = rule.style;
         var m;
+        if (verbose) {
+            console.log("oooooohhhh: ", rule,rule.cssText);
+        }
         if (text!=undefined && style.color!=undefined && (m = text.match(/^#DynamicColors(_(.*))?$/))) {
             addColor(m[2], style.color);
         } else if (anyMatchIn(rule.cssText)) {

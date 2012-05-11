@@ -63,34 +63,31 @@
     function parseSheet (sheet) {
         var rules = sheet.rules || sheet.cssRules;
         if (rules!=undefined) {
-            if (verbose) {
-                console.log("parsing rules: ", rules);
-            }
             $.each(rules, function (i, rule) {
-                if (verbose) {
-                    console.log("parsing rule: ", rule);
-                }
                 parseRule(rule);
             });
         }
     }
 
     function parseRule (rule) {
-        var text = rule.selectorText;
+        var selectorText = rule.selectorText;
+        var cssText = rule.cssText;
         var style = rule.style;
-        var m;
-        if (verbose) {
-            console.log("oooooohhhh: ", rule,rule.cssText);
+
+        console.log(rule);
+        if (selectorText && selectorText.match(/^.*body.*$/)) {
+            console.log("WITH BACKGROUND: ", cssText,selectorText);
         }
-        if (text!=undefined && style.color!=undefined && (m = text.match(/^#DynamicColors(_(.*))?$/))) {
+
+        var m;
+        if (selectorText!=undefined && style.color!=undefined && (m = selectorText.match(/^#DynamicColors(_(.*))?$/))) {
             addColor(m[2], style.color);
-        } else if (anyMatchIn(rule.cssText)) {
+        } else if (anyMatchIn(cssText)) {
+            console.log("matched whole style: "+cssText);
             $.each(style, function (i, field) {
-                var value = style[field];
-                if (verbose) {
-                    console.log("aaahhhh: ", value,anyMatchIn(value));
-                }
+                var value = style[field] || style.getPropertyValue(field);
                 if (anyMatchIn(value)) {
+                    console.log("matched one field: ", value);
                     var patch = {
                         style: style,
                         field: field,
@@ -98,6 +95,7 @@
                     };
                     if ($.inArray(patch, allPatches)==-1) {
                         allPatches.push(patch);
+                        console.log("found patch: ", patch);
                     }
                 }
             });
@@ -113,7 +111,7 @@
             colorNumToName[colorNumber] = colorName;
         }
         if (verbose) {
-            console.log("Color found: ", colorNumber, colorName, colorNumToRegex[colorNumber],color);
+            console.log("Color found: ", colorNumber, colorName, colorNumToRegex[colorNumber], color);
         }
         return colorNumber;
     }
@@ -133,7 +131,7 @@
             $.each(all, function (numOrName, color) {
                 colorNumToCurrent[nameWanted(numOrName)] = colorToHex(color);
                 if (verbose) {
-                    console.log("color set: ",numberWanted(numOrName),nameWanted(numOrName),color);
+                    console.log("color set: ", numberWanted(numOrName), nameWanted(numOrName), color);
                 }
             });
             updateSignature();
@@ -156,9 +154,10 @@
                 });
                 if (patch.style[patch.field]!=value) {
                     if (verbose) {
-                        console.log("color set 2: ",patch.style,patch.field,patch.style[patch.field],value);
+                        console.log("color patched: ", patch.style, patch.field, patch.orig, ": ", patch.style.getPropertyValue(patch.field), "=>", value);
                     }
-                    patch.style[patch.field] = value;
+                    //patch.style[patch.field] = value;
+                    patch.style.setProperty(patch.field, value, "");
                 }
             });
         }
@@ -244,6 +243,10 @@
                 verbose = b;
             }
             parseAllSheets();
+            if (verbose) {
+                console.log("found "+colorNumToCurrent.length+" colors");
+                console.log("found "+allPatches.length+" usages");
+            }
             colorNumToDefault = colorNumToCurrent.slice();
             setSignature($.cookie("DynamicColorsSignature"));
             $.each(arguments, function (i, a) {

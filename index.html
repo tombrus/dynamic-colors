@@ -12,23 +12,14 @@
         #DynamicColors_backgroundB {
             color : #1c1c1c;
         }
-        #DynamicColors_a1 {
-            color : #7fffd4;
+        #DynamicColors_upper {
+            color : #ff0000;
         }
-        #DynamicColors_a2 {
-            color : #bdb76b;
+        #DynamicColors_middle {
+            color : #ffffff;
         }
-        #DynamicColors_a3 {
-            color : #a0522d;
-        }
-        #DynamicColors_b1 {
-            color : #ee82ee;
-        }
-        #DynamicColors_b2 {
-            color : #008080;
-        }
-        #DynamicColors_b3 {
-            color : #a0522e;
+        #DynamicColors_lower {
+            color : #0000ff;
         }
     </style>
     <link rel="stylesheet" href="stylesheets/styles.css">
@@ -42,26 +33,16 @@
             background-color : #ffefd5;
         }
         td {
-            height : 100px;
-            width  : 100px;
+            height : 50px;
         }
-        #A1 {
-            background-color : #7fffd4;
+        #A {
+            background-color : #ff0000;
         }
-        #A2 {
-            background-color : #bdb76b;
+        #B {
+            background-color : #ffffff;
         }
-        #A3 {
-            background-color : #a0522d;
-        }
-        #B1 {
-            background-color : #ee82ee;
-        }
-        #B2 {
-            background-color : #008080;
-        }
-        #B3 {
-            background-color : #a0522e;
+        #C {
+            background-color : #0000ff;
         }
     </style>
 
@@ -157,22 +138,20 @@
         <H3>demonstration</H3>
         <ul>
             <li>adjust the colors with the color pickers</li>
+            <li>the first two colors are the background gradient, the other three are the flag below</li>
             <li>copy the signature string for later reference or communication</li>
             <li>the colors will be saved in a cookie and will return when you return</li>
         </ul>
 
         <table>
             <tr>
-                <td id=A1></td>
-                <td id=B1></td>
+                <td id=A></td>
             </tr>
             <tr>
-                <td id=A2></td>
-                <td id=B2></td>
+                <td id=B></td>
             </tr>
             <tr>
-                <td id=A3></td>
-                <td id=B3></td>
+                <td id=C></td>
             </tr>
         </table>
         <div id="my-colorpanel"></div>

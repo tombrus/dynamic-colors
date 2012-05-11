@@ -162,6 +162,7 @@
 
     function setSignature (signature) {
         setColor(JSON.parse(signature));
+        prepPickers();
     }
 
     function listen (fs) {

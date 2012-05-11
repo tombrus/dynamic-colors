@@ -239,7 +239,7 @@
                         listen(a);
                         break;
                     case "object":
-                        if (a.context instanceof HTMLDocument) {
+                        if (a.context instanceof Node) {
                             createColorPanel(a);
                         } else {
                             throw new Error("Unknown object argument: "+a);

@@ -39,6 +39,10 @@
             font-family      : Verdana, Arial, Helvetica, sans-serif;
             background-color : #ffefd5;
         }
+        td {
+            height : 100px;
+            width  : 100px;
+        }
         #A1 {
             background-color : #7fffd4;
         }
@@ -147,14 +151,14 @@
             <li>jquery-cookie is taken from <a href="https://github.com/carhartl/jquery-cookie">https://github.com/carhartl/jquery-cookie</a>
             </li>
         </ul>
-    </section>
 
-    <div id="example">
-        <H3>This demonstrates the dynamic-colors project: play around with the colors below.</H3>
+        <H3>demonstration</H3>
         <ul>
-            <li>Copy the signature string for later reference or communication.</li>
-            <li>The colors will be saved in a cookie and will return when you return.</li>
+            <li>adjust the colors with the color pickers</li>
+            <li>copy the signature string for later reference or communication</li>
+            <li>the colors will be saved in a cookie and will return when you return</li>
         </ul>
+
         <table>
             <tr>
                 <td id=A1></td>
@@ -169,8 +173,9 @@
                 <td id=B3></td>
             </tr>
         </table>
-    </div>
-    <div id="my-colorpanel"></div>
+        <div id="my-colorpanel"></div>
+        <div style="height:200px"></div>
+    </section>
 </div>
 <!--[if !IE]>
 <script>fixScale(document);</script><!--<![endif]-->

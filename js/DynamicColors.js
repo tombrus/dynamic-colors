@@ -101,7 +101,7 @@
             colorNumToName[colorNumber] = colorName;
         }
         if (verbose) {
-            console.log("Color found: ", colorNumber, colorName, color);
+            console.log("Color found: ", colorNumber, colorName, colorNumToRegex[colorNumber],color);
         }
         return colorNumber;
     }

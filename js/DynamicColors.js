@@ -38,7 +38,7 @@
         if (color.substr(0, 1)!=='#') {
             var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
             var rgb = parseInt(digits[4]) | (parseInt(digits[3])<<8) | (parseInt(digits[2])<<16);
-            color = digits[1]+'#'+("000000"+rgb.toString(16)).substr(-8);
+            color = digits[1]+'#'+("000000"+rgb.toString(16)).substr(-6);
         }
         return color;
     }

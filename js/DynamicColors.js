@@ -74,20 +74,19 @@
         var cssText = rule.cssText;
         var style = rule.style;
 
-        console.log(rule);
-        if (selectorText && selectorText.match(/^.*body.*$/)) {
-            console.log("WITH BACKGROUND: ", cssText,selectorText);
-        }
-
         var m;
         if (selectorText!=undefined && style.color!=undefined && (m = selectorText.match(/^#DynamicColors(_(.*))?$/))) {
             addColor(m[2], style.color);
         } else if (anyMatchIn(cssText)) {
-            console.log("matched whole style: "+cssText);
+            if (verbose) {
+                console.log("matched whole style:", cssText);
+            }
             $.each(style, function (i, field) {
                 var value = style[field] || style.getPropertyValue(field);
                 if (anyMatchIn(value)) {
-                    console.log("matched one field: ", value);
+                    if (verbose) {
+                        console.log("matched one field:", value);
+                    }
                     var patch = {
                         style: style,
                         field: field,
@@ -95,7 +94,9 @@
                     };
                     if ($.inArray(patch, allPatches)==-1) {
                         allPatches.push(patch);
-                        console.log("found patch: ", patch);
+                        if (verbose) {
+                            console.log("found patch:", patch);
+                        }
                     }
                 }
             });
@@ -156,7 +157,6 @@
                     if (verbose) {
                         console.log("color patched: ", patch.style, patch.field, patch.orig, ": ", patch.style.getPropertyValue(patch.field), "=>", value);
                     }
-                    //patch.style[patch.field] = value;
                     patch.style.setProperty(patch.field, value, "");
                 }
             });

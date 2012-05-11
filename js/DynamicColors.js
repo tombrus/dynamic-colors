@@ -63,7 +63,13 @@
     function parseSheet (sheet) {
         var rules = sheet.rules || sheet.cssRules;
         if (rules!=undefined) {
+            if (verbose) {
+                console.log("parsing rules: ", rules);
+            }
             $.each(rules, function (i, rule) {
+                if (verbose) {
+                    console.log("parsing rule: ", rule);
+                }
                 parseRule(rule);
             });
         }

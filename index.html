@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Dynamic-colors by tombrus</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/tombrus/dynamic-colors">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/tombrus/dynamic-colors/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/tombrus/dynamic-colors/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Dynamic-colors</h1>
+          <p>JQuery extension to dynamically adjust colors on a page: every user can skin the colors (saved in a cookie)</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/tombrus">tombrus</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h2>dynamic-colors</h2>
+
+<p>JQuery extension to dynamically adjust colors on a page (see index.html):</p>
+
+<ul>
+<li>define what colors are changeable in your css:
+<pre><code>#DynamicColors_background {color: #ffefd5;}</code></pre>
+</li>
+<li>use it anywhere in your css:
+<pre><code>body {background-color: #ffefd5;}</code></pre>
+</li>
+<li>init DynamicColors and pass in a div for the color controls:
+<pre><code>$(function () {$.DynamicColors($("#my-colorpanel"));});</code></pre>
+</li>
+<li>the color controls div will contain a list of color-pickers that
+allow you to dynamically adjust the colors on the page</li>
+<li>changed colors are saved in a cookie, so they re-appear</li>
+<li>you can copy the color settings from a text field to tell someone
+else to rate or enjoy it</li>
+</ul><p>Can be helpful while developing a proper color scheme (or schemes).
+You can also empower your users to tweak some colors to their liking.</p>
+
+<h3>todo</h3>
+
+<ul>
+<li>make color controls foldeable/floating</li>
+<li>show tooltip with color when hovering color pickers</li>
+<li>format signature as css so that it is pasteable over the initial css</li>
+</ul><h3>license</h3>
+
+<ul>
+<li>Dual licensed under the MIT and GPL licenses.</li>
+</ul><h3>legal</h3>
+
+<ul>
+<li>color-picker is an adjusted version from <a href="http://www.eyecon.ro/colorpicker/">http://www.eyecon.ro/colorpicker/</a>
+</li>
+<li>jquery-cookie is taken from <a href="https://github.com/carhartl/jquery-cookie">https://github.com/carhartl/jquery-cookie</a>
+</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>

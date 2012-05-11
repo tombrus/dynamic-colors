@@ -61,8 +61,9 @@
     }
 
     function parseSheet (sheet) {
-        if (sheet.rules!=undefined) {
-            $.each(sheet.rules, function (i, rule) {
+        var rules = sheet.rules || sheet.cssRules;
+        if (rules!=undefined) {
+            $.each(rules, function (i, rule) {
                 parseRule(rule);
             });
         }

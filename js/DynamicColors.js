@@ -120,7 +120,7 @@
             $.each(all, function (numOrName, color) {
                 colorNumToCurrent[nameWanted(numOrName)] = colorToHex(color);
                 if (verbose) {
-                    console.log("color set: ", numberWanted(numOrName), nameWanted(numOrName), color);
+                    console.log("color set: ",numberWanted(numOrName),nameWanted(numOrName),color);
                 }
             });
             updateSignature();
@@ -162,6 +162,7 @@
 
     function setSignature (signature) {
         setColor(JSON.parse(signature));
+        prepPickers();
     }
 
     function listen (fs) {

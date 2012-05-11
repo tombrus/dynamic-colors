@@ -143,6 +143,9 @@
                     }
                 });
                 if (patch.style[patch.field]!=value) {
+                    if (verbose) {
+                        console.log("color set 2: ",patch.style,patch.field,patch.style[patch.field],value);
+                    }
                     patch.style[patch.field] = value;
                 }
             });

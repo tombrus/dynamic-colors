@@ -4,6 +4,7 @@
   - make color controls foldeable/floating
   - show tooltip with color when hovering color pickers
   - format signature as css so that it is pasteable over the initial css
+  - do not require to define the dyn-colors in css before they are used
 
 ### license
    - Dual licensed under the MIT and GPL licenses.

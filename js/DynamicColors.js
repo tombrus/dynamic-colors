@@ -70,15 +70,23 @@
     }
 
     function parseRule (rule) {
-        var text = rule.selectorText;
+        var selectorText = rule.selectorText;
+        var cssText = rule.cssText;
         var style = rule.style;
+
         var m;
-        if (text!=undefined && style.color!=undefined && (m = text.match(/^#DynamicColors(_(.*))?$/))) {
+        if (selectorText!=undefined && style.color!=undefined && (m = selectorText.match(/^#DynamicColors(_(.*))?$/))) {
             addColor(m[2], style.color);
-        } else if (anyMatchIn(rule.cssText)) {
+        } else if (anyMatchIn(cssText)) {
+            if (verbose) {
+                console.log("matched whole style:", cssText);
+            }
             $.each(style, function (i, field) {
-                var value = style[field];
+                var value = style[field] || style.getPropertyValue(field);
                 if (anyMatchIn(value)) {
+                    if (verbose) {
+                        console.log("matched one field:", value);
+                    }
                     var patch = {
                         style: style,
                         field: field,
@@ -86,6 +94,9 @@
                     };
                     if ($.inArray(patch, allPatches)==-1) {
                         allPatches.push(patch);
+                        if (verbose) {
+                            console.log("found patch:", patch);
+                        }
                     }
                 }
             });
@@ -101,7 +112,7 @@
             colorNumToName[colorNumber] = colorName;
         }
         if (verbose) {
-            console.log("Color found: ", colorNumber, colorName, color);
+            console.log("Color found: ", colorNumber, colorName, colorNumToRegex[colorNumber], color);
         }
         return colorNumber;
     }
@@ -121,7 +132,7 @@
             $.each(all, function (numOrName, color) {
                 colorNumToCurrent[nameWanted(numOrName)] = colorToHex(color);
                 if (verbose) {
-                    console.log("color set: ",numberWanted(numOrName),nameWanted(numOrName),color);
+                    console.log("color set: ", numberWanted(numOrName), nameWanted(numOrName), color);
                 }
             });
             updateSignature();
@@ -143,7 +154,10 @@
                     }
                 });
                 if (patch.style[patch.field]!=value) {
-                    patch.style[patch.field] = value;
+                    if (verbose) {
+                        console.log("color patched: ", patch.style, patch.field, patch.orig, ": ", patch.style.getPropertyValue(patch.field), "=>", value);
+                    }
+                    patch.style.setProperty(patch.field, value, "");
                 }
             });
         }
@@ -229,6 +243,10 @@
                 verbose = b;
             }
             parseAllSheets();
+            if (verbose) {
+                console.log("found "+colorNumToCurrent.length+" colors");
+                console.log("found "+allPatches.length+" usages");
+            }
             colorNumToDefault = colorNumToCurrent.slice();
             setSignature($.cookie("DynamicColorsSignature"));
             $.each(arguments, function (i, a) {

@@ -54,30 +54,47 @@
         return result;
     }
 
-    function parseAllSheets () {
+    function eachRule (f) {
         $.each(document.styleSheets, function (i, sheet) {
-            parseSheet(sheet);
+            var rules = sheet.rules || sheet.cssRules;
+            if (rules!=undefined) {
+                $.each(rules, function (i, rule) {
+                    f(rule);
+                });
+            }
         });
     }
 
-    function parseSheet (sheet) {
-        var rules = sheet.rules || sheet.cssRules;
-        if (rules!=undefined) {
-            $.each(rules, function (i, rule) {
-                parseRule(rule);
-            });
+    function addColorFromRule (rule) {
+        var selectorText = rule.selectorText;
+        var style = rule.style;
+        if (selectorText!=undefined && style!=undefined && style.color!=undefined) {
+            var m = selectorText.match(/^#DynamicColors(_(.*))?$/);
+            if (m) {
+                addColor(m[2], style.color);
+            }
         }
     }
 
-    function parseRule (rule) {
-        var selectorText = rule.selectorText;
+    function addColor (colorName, color) {
+        var colorNumber = colorNumToRegex.length;
+        colorNumToRegex[colorNumber] = new RegExp(color.replace(/[)(]/g, "\\$&"), "g");
+        colorNumToCurrent[colorNumber] = colorToHex(color);
+        if (colorName!=undefined) {
+            colorNameToNum[colorName] = colorNumber;
+            colorNumToName[colorNumber] = colorName;
+        }
+        if (verbose) {
+            console.log("Color found: ", colorNumber, colorName, colorNumToRegex[colorNumber], color);
+        }
+        return colorNumber;
+    }
+
+    function gatherPatchLocations (rule) {
         var cssText = rule.cssText;
         var style = rule.style;
 
-        var m;
-        if (selectorText!=undefined && style.color!=undefined && (m = selectorText.match(/^#DynamicColors(_(.*))?$/))) {
-            addColor(m[2], style.color);
-        } else if (anyMatchIn(cssText)) {
+        if (anyMatchIn(cssText)) {
             if (verbose) {
                 console.log("matched whole style:", cssText);
             }
@@ -101,20 +118,6 @@
                 }
             });
         }
-    }
-
-    function addColor (colorName, color) {
-        var colorNumber = colorNumToRegex.length;
-        colorNumToRegex[colorNumber] = new RegExp(color.replace(/[)(]/g, "\\$&"), "g");
-        colorNumToCurrent[colorNumber] = colorToHex(color);
-        if (colorName!=undefined) {
-            colorNameToNum[colorName] = colorNumber;
-            colorNumToName[colorNumber] = colorName;
-        }
-        if (verbose) {
-            console.log("Color found: ", colorNumber, colorName, colorNumToRegex[colorNumber], color);
-        }
-        return colorNumber;
     }
 
     function getColor (numOrName) {
@@ -242,7 +245,8 @@
             if (typeof b=="boolean") {
                 verbose = b;
             }
-            parseAllSheets();
+            eachRule(addColorFromRule);
+            eachRule(gatherPatchLocations);
             if (verbose) {
                 console.log("found "+colorNumToCurrent.length+" colors");
                 console.log("found "+allPatches.length+" usages");

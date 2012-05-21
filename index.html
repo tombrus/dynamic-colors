@@ -25,8 +25,12 @@
         #DynamicColors_lower {
             color : #0000ff;
         }
+        table {
+            width : 300px;
+            margin-left : 200px;
+        }
         td {
-            height : 50px;
+            height : 30px;
         }
         #A {
             background-color : #ff0000;
@@ -87,6 +91,36 @@
 
         <p>JQuery extension to dynamically adjust colors on a page (demo below):</p>
 
+        <p>Can be helpful while developing a proper color scheme (or schemes).
+            You can also empower your users to tweak some colors to their liking.</p>
+
+        <H3>demo</H3>
+        <ul>
+            <li>adjust the colors with the color pickers</li>
+            <li>the first two colors are the background gradient, the other three are the flag below</li>
+            <li>copy the signature string for later reference or communication</li>
+            <li>the colors will be saved in a cookie and will return when you return</li>
+            <li>try these two (copy to signature field below):
+<pre><code style="font-size:9px">{"backgroundA":"#8488d1","backgroundB":"#1c1c1c","upper":"#000000","middle":"#ff0000","lower":"#ffff00"}
+{"backgroundA":"#ba85bf","backgroundB":"#2d4d2f","upper":"#ffff00","middle":"#2ec72e","lower":"#ff0000"}
+</code></pre>
+            </li>
+        </ul>
+
+        <table>
+            <tr>
+                <td id=A></td>
+            </tr>
+            <tr>
+                <td id=B></td>
+            </tr>
+            <tr>
+                <td id=C></td>
+            </tr>
+        </table>
+        <div id="my-colorpanel"></div>
+
+        <h3>how to</h3>
         <ul>
             <li>define what colors are changeable in your css:
                 <pre><code>#DynamicColors_background {color: #ffefd5;}</code></pre>
@@ -105,9 +139,6 @@
                 else to rate or enjoy it
             </li>
         </ul>
-        <p>Can be helpful while developing a proper color scheme (or schemes).
-            You can also empower your users to tweak some colors to their liking.</p>
-
         <h3>todo</h3>
 
         <ul>
@@ -129,32 +160,6 @@
             </li>
         </ul>
 
-        <H3>demonstration</H3>
-        <ul>
-            <li>adjust the colors with the color pickers</li>
-            <li>the first two colors are the background gradient, the other three are the flag below</li>
-            <li>copy the signature string for later reference or communication</li>
-            <li>the colors will be saved in a cookie and will return when you return</li>
-            <li>try these (by copy to signature field below):
-<pre><code>{"backgroundA":"#8488d1","backgroundB":"#1c1c1c","upper":"#000000","middle":"#ff0000","lower":"#ffff00"}
-{"backgroundA":"#ba85bf","backgroundB":"#2d4d2f","upper":"#ffff00","middle":"#2ec72e","lower":"#ff0000"}
-</code></pre>
-            </li>
-        </ul>
-
-        <table>
-            <tr>
-                <td id=A></td>
-            </tr>
-            <tr>
-                <td id=B></td>
-            </tr>
-            <tr>
-                <td id=C></td>
-            </tr>
-        </table>
-        <div id="my-colorpanel"></div>
-        <div style="height:200px"></div>
     </section>
 </div>
 <!--[if !IE]>

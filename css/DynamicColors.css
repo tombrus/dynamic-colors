@@ -12,10 +12,10 @@
  */
 #DC-selector {
     background-color : #dddddd;
+    color            : #000000;
     padding          : 4px;
     margin           : 10px;
     border           : solid 3px #888888;
-    width            : 875px;
 }
 #DC-selector p {
     margin  : 0;
@@ -26,8 +26,9 @@
     margin-left : 20px;
 }
 #DC-signature {
-    width       : 840px;
+    width       : 95%;
     margin-left : 20px;
+    font-size   : 9px;
 }
 .DC-resetButton {
     float : right;

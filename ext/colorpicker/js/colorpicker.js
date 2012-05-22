@@ -13,7 +13,7 @@
  */
 (function () {
     var ColorPicker = function () {
-        const tpl = (function () {
+        var tpl = (function () {
             var h;
             h = '<div class="colorpicker">';
             h += /**/'<div class="colorpicker_color"><div><div></div></div></div>';
@@ -32,7 +32,7 @@
             h += '</div>';
             return h;
         })();
-        const defaults = {
+        var defaults = {
             eventName   : 'click',
             onShow      : function () {
             },
@@ -415,7 +415,7 @@
             var picker = $(this).parent();
             var color = picker.data('colorpicker').origColor;
             picker.data('colorpicker').color = color;
-            const picker0 = picker.get(0);
+            var picker0 = picker.get(0);
             fillRGBFields(color, picker0);
             fillHexFields(color, picker0);
             fillHSBFields(color, picker0);
@@ -459,8 +459,8 @@
                         picker.data('colorpicker', options);
                         picker.find('div.colorpicker_submit').bind('mouseenter', enterSubmit).bind('mouseleave', leaveSubmit).bind('click', clickSubmit);
 
-                        const picker0 = picker.get(0);
-                        const color = options.color;
+                        var picker0 = picker.get(0);
+                        var color = options.color;
                         fillRGBFields(color, picker0);
                         fillHSBFields(color, picker0);
                         fillHexFields(color, picker0);
@@ -488,7 +488,7 @@
             },
             hidePicker: function () {
                 return this.each(function () {
-                    const id = $(this).data('colorpickerId');
+                    var id = $(this).data('colorpickerId');
                     if (id) {
                         $('#'+id).hide();
                     }
@@ -505,13 +505,13 @@
                     return this;
                 }
                 return this.each(function () {
-                    const id = $(this).data('colorpickerId');
+                    var id = $(this).data('colorpickerId');
                     if (id) {
                         var picker = $('#'+id);
-                        const config = picker.data('colorpicker');
+                        var config = picker.data('colorpicker');
                         config.color = color;
                         config.origColor = color;
-                        const picker0 = picker.get(0);
+                        var picker0 = picker.get(0);
                         fillRGBFields(color, picker0);
                         fillHSBFields(color, picker0);
                         fillHexFields(color, picker0);

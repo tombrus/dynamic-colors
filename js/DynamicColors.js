@@ -23,13 +23,13 @@
     var listeners = [];
 
     function nameWanted (numOrName) {
-        const num = colorNameToNum[numOrName];
+        var num = colorNameToNum[numOrName];
         return num==undefined ? numOrName : num;
 
     }
 
     function numberWanted (numOrName) {
-        const name = colorNumToName[numOrName];
+        var name = colorNumToName[numOrName];
         return name==undefined ? numOrName : name;
 
     }
@@ -199,13 +199,13 @@
 
     function createColorPanel (here) {
         if (here) {
-            const l1 = '<button class="DC-resetButton" onclick="$.DynamicColors_reset();">reset colors</button>';
-            const l2 = '<p>Adjust the colors:</p>';
-            const l3 = '<div id="DC-selectors"></div>';
-            const l4 = '<p>signature (copy and save for later):</p>';
-            const l5 = '<input type="text" id="DC-signature" oninput="$.DynamicColors_setSignature(this.value)">';
-            const inner = '<div id="DC-selector">'+l1+l2+l3+l4+l5+'</div>';
-            const part = '<div class="colorSelector"><div></div></div>';
+            var l1 = '<button class="DC-resetButton" onclick="$.DynamicColors_reset();">reset colors</button>';
+            var l2 = '<p>Adjust the colors:</p>';
+            var l3 = '<div id="DC-selectors"></div>';
+            var l4 = '<p>signature (copy and save for later):</p>';
+            var l5 = '<input type="text" id="DC-signature" oninput="$.DynamicColors_setSignature(this.value)">';
+            var inner = '<div id="DC-selector">'+l1+l2+l3+l4+l5+'</div>';
+            var part = '<div class="colorSelector"><div></div></div>';
 
             var selector = $(inner);
             selector.appendTo(here);
@@ -220,7 +220,7 @@
                         picker.ColorPickerSetColor(colorNumToCurrent[num]);
                     },
                     onChange    : function (hsb, hex, rgb) {
-                        const color = "#"+hex;
+                        var color = "#"+hex;
                         div.css('backgroundColor', color);
                         setColor(name, color);
                     }

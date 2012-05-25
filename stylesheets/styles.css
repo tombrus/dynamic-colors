@@ -534,7 +534,6 @@ body {
     font                  : 14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color                 : #f0e7d5;
     font-weight           : normal;
-    background            : #252525;
     background-attachment : fixed !important;
     background            : -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2a2a29), color-stop(100%, #1c1c1c));
     background            : -webkit-linear-gradient(#2a2a29, #1c1c1c);
@@ -542,6 +541,9 @@ body {
     background            : -o-linear-gradient(#2a2a29, #1c1c1c);
     background            : -ms-linear-gradient(#2a2a29, #1c1c1c);
     background            : linear-gradient(#2a2a29, #1c1c1c);
+    filter                : progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a2a29', endColorstr='#1c1c1c');  //IE6 & IE7
+    -ms-filter            : "progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a2a29', endColorstr='#1c1c1c')";  //IE8+
+    background-color      : #252525;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -734,6 +736,8 @@ dt {
     background            : -o-linear-gradient(#93bd20, #659e10);
     background            : -ms-linear-gradient(#93bd20, #659e10);
     background            : linear-gradient(#93bd20, #659e10);
+    filter                : progid:DXImageTransform.Microsoft.gradient(startColorstr='#93bd20', endColorstr='#659e10');  //IE6 & IE7
+    -ms-filter            : "progid:DXImageTransform.Microsoft.gradient(startColorstr='#93bd20', endColorstr='#659e10')";  //IE8+
     -moz-border-radius    : 2px;
     -webkit-border-radius : 2px;
     -o-border-radius      : 2px;
@@ -759,6 +763,8 @@ dt {
     background         : -o-linear-gradient(#749619, #527f0e);
     background         : -ms-linear-gradient(#749619, #527f0e);
     background         : linear-gradient(#749619, #527f0e);
+    filter             : progid:DXImageTransform.Microsoft.gradient(startColorstr='#749619', endColorstr='#527f0e');  //IE6 & IE7
+    -ms-filter         : "progid:DXImageTransform.Microsoft.gradient(startColorstr='#749619', endColorstr='#527f0e')";  //IE8+
     background-color   : #659e10;
     border             : 1px solid #527f0e;
     -moz-box-shadow    : inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);

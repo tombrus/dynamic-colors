@@ -17,29 +17,29 @@
             color : #1c1c1c;
         }
         #DynamicColors_upper {
-            color : #ff0000;
+            color : #ff0101;
         }
         #DynamicColors_middle {
-            color : #ffffff;
+            color : #fffefe;
         }
         #DynamicColors_lower {
-            color : #0000ff;
+            color : #0101ff;
         }
         table {
-            width : 300px;
+            width       : 300px;
             margin-left : 200px;
         }
         td {
             height : 30px;
         }
         #A {
-            background-color : #ff0000;
+            background-color : #ff0101;
         }
         #B {
-            background-color : #ffffff;
+            background-color : #fffefe;
         }
         #C {
-            background-color : #0000ff;
+            background-color : #0101ff;
         }
     </style>
 
@@ -51,9 +51,29 @@
 
     <script type="text/javascript">
         $(function () {
-            // for verbose use: $.DynamicColors(true, $("#my-colorpanel"));
+            //$.DynamicColors_verbose(true);
             $.DynamicColors($("#my-colorpanel"));
         });
+        function presetNL () {
+            $.DynamicColors_setColor({backgroundA: "#2a2a29", backgroundB: "#1c1c1c", upper: "#ff0000", middle: "#ffffff", lower: "#0000ff"});
+        }
+        function presetBD () {
+            $.DynamicColors_setColor({backgroundA: "#8488d1", backgroundB: "#1c1c1c", upper: "#000000", middle: "#ff0000", lower: "#ffff00"});
+        }
+        function presetLI () {
+            $.DynamicColors_setColor({backgroundA: "#ba85bf", backgroundB: "#2d4d2f", upper: "#ffff00", middle: "#2ec72e", lower: "#ff0000"});
+        }
+        function animateColors () {
+            function randomColor() {
+                return "#"+("000000"+Math.floor(Math.random()*0xffffff).toString(16)).substr(-6);
+            }
+            $.DynamicColors_animate([
+                {upper: "#ffff00", middle: "#2ec72e", lower: "#ff0000"},
+                {upper: "#000000", middle: "#ff0000", lower: "#ffff00"},
+                {upper: "#ff0000", middle: "#ffffff", lower: "#0000ff"},
+                {upper: randomColor(), middle: randomColor(), lower: randomColor()}
+            ],{duration: 4000});
+        }
     </script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -97,13 +117,20 @@
         <H3>demo</H3>
         <ul>
             <li>adjust the colors with the color pickers</li>
-            <li>the first two colors are the background gradient, the other three are the flag below</li>
+            <li>the first two colors are the background gradient, the other three are for the flag</li>
             <li>copy the signature string for later reference or communication</li>
             <li>the colors will be saved in a cookie and will return when you return</li>
             <li>try these two (copy to signature field below):
 <pre><code style="font-size:9px">{"backgroundA":"#8488d1","backgroundB":"#1c1c1c","upper":"#000000","middle":"#ff0000","lower":"#ffff00"}
-{"backgroundA":"#ba85bf","backgroundB":"#2d4d2f","upper":"#ffff00","middle":"#2ec72e","lower":"#ff0000"}
-</code></pre>
+{"backgroundA":"#ba85bf","backgroundB":"#2d4d2f","upper":"#ffff00","middle":"#2ec72e","lower":"#ff0000"}</code></pre>
+            </li>
+            <li>...or use preset buttons:
+                <button onclick="presetNL()">Netherlands</button>
+                <button onclick="presetBD()">Germany</button>
+                <button onclick="presetLI()">Lithuania</button>
+            </li>
+            <li>...or do some color animation:
+                <button onclick="animateColors()">animate</button>
             </li>
         </ul>
 
